@@ -52,6 +52,6 @@ public class Calculator {
             result=1/result;
         }
         return result;
-
+        // check test run on commit
     }
 }
