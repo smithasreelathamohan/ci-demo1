@@ -38,7 +38,6 @@ class CalculatorTest {
         int result=calc.subtraction(firstnumber,secondnumber);
         assertEquals(expected,result,"\nFailed: "+firstnumber +" - "+secondnumber+" should be = "+expected +" but actual result calculated is "+result);
         log.info("      Subtraction Test Passed! ");
-
     }
 
     @Test
