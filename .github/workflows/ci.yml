@@ -7,7 +7,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  Build my project:
+  build_my_project:
 
     runs-on: ubuntu-latest
 
