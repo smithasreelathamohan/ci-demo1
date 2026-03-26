@@ -11,7 +11,7 @@ public class CalculatorTestData {
         return Stream.of(Arguments.of(10,15,25),
                 Arguments.of(-7,-60,-67),
                 Arguments.of(-9,8,-1),
-                Arguments.of(80,-50,30),
+                Arguments.of(80,-50,3),
                 Arguments.of(5,8.5,13.5),
                 Arguments.of(6,-50,-44),
                 Arguments.of(5.777,8.5,14.277000000000001));

@@ -3,20 +3,19 @@ package com.example.cidemo1;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-
+import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
-    private static final Logger log = LoggerFactory.getLogger(CalculatorTest.class);
+
+
+    private static final Logger log = Logger.getLogger(CalculatorTest.class.getName());
+
     Calculator calc;
     @BeforeEach
     void setUp(TestInfo testinfo) {
         calc = new Calculator();
         log.info("------Test Started: "+testinfo.getDisplayName() +" ------");
-
     }
     @AfterEach
     void tearDown(TestInfo testinfo) {
@@ -28,8 +27,16 @@ class CalculatorTest {
     void testCalculatorAddition(double firstnumber, double secondnumber, double expected)
     {
         double result=calc.addition(firstnumber,secondnumber);
-        assertEquals(expected,result, "\nFailed: "+firstnumber +" + "+secondnumber+" should be = "+expected +" but actual result calculated is "+result);
-        log.info("      Addition Test Passed! ");
+        try{
+            assertEquals(expected,result, "\nFailed: "+firstnumber +" + "+secondnumber+" should be = "+expected +" but actual result calculated is "+result);
+            log.info("      Addition Test Passed! ");
+        }
+        catch(AssertionError error)
+        {
+            log.severe("      Addition Test Failed! ");
+            throw error;
+        }
+
     }
 
     @ParameterizedTest(name = "Subtract {0} - {1} ")
@@ -44,14 +51,14 @@ class CalculatorTest {
     @DisplayName("testMultiplyTwoPositiveNumbers")
     void testMultiplyTwoPositiveNumbers(TestInfo testinfo) {
         assertEquals(10,calc.multiplication(-5,-2),testinfo.getDisplayName() +": Failed! ");
-        System.out.println("      Test Passed! ");
+        log.info("      Multiplication Test Passed! ");
     }
 
     @Test
     @DisplayName("testDivideTwoNumbers")
     void testDivideTwoNumbers(TestInfo testinfo) {
         assertEquals(15.5,calc.division(31,2),testinfo.getDisplayName() +": Failed! ");
-        System.out.println("      Test Passed! ");
+        log.info("      Division Test Passed! ");
     }
 
     @Test

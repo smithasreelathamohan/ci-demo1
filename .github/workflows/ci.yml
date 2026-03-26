@@ -1,5 +1,5 @@
 name: Java test project
-run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
+
 on:
   push:
     branches: [ "master" ]
@@ -27,6 +27,7 @@ jobs:
 
       - name: Run tests
         run: mvn test
+
 
       - name: Package project
         run: mvn package

@@ -1,6 +1,7 @@
 package com.example.cidemo1;
 
 import org.junit.jupiter.api.Test;
+import com.example.cidemo1.Playwright;
 
 public class PlaywrightTest  {
 
